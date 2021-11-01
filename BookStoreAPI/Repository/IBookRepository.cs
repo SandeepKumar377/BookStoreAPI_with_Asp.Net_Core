@@ -7,5 +7,6 @@ namespace BookStoreAPI.Repository
     public interface IBookRepository
     {
         Task<List<BookModel>> GetAllBookAsync();
+        Task<BookModel> GetBookAsync(int bookId);
     }
 }

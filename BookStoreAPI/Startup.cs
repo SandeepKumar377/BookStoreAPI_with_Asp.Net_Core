@@ -33,6 +33,7 @@ namespace BookStoreAPI
                 options=> options.UseSqlServer(Configuration.GetConnectionString("BookStoreDB")));
             services.AddControllers();
             services.AddTransient<IBookRepository, BookRepository>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStoreAPI", Version = "v1" });

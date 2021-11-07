@@ -35,6 +35,14 @@ namespace BookStoreAPI
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddCors(option =>
+            {
+                option.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStoreAPI", Version = "v1" });
@@ -53,6 +61,7 @@ namespace BookStoreAPI
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

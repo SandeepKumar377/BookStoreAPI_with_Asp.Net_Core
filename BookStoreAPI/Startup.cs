@@ -33,6 +33,7 @@ namespace BookStoreAPI
                 options=> options.UseSqlServer(Configuration.GetConnectionString("BookStoreDB")));
             services.AddControllers().AddNewtonsoftJson();
             services.AddTransient<IBookRepository, BookRepository>();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddSwaggerGen(c =>
             {
